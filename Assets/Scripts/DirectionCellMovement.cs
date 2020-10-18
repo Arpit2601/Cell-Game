@@ -3,26 +3,36 @@ using System.Collections;
 using System;
 public class DirectionCellMovement : MonoBehaviour
 {
-    private Vector3 targetPosition ;
-    private Vector3 dir ;
+    public Vector3 targetPosition ;
+    private TimeController timeController;
+    private bool moving;
+
     void Start() {
         targetPosition = transform.position;  
-        //  GetNextWaypoint();
+        timeController = TimeController.instance;
+        moving  =false;
     }
 
     void Update()
     {
-       	if (Vector3.Distance(transform.position, targetPosition) > Constants.distanceDelta)
-        {
-            Vector3 dir = targetPosition - transform.position;
-            transform.Translate(dir.normalized * Constants.nodeSize * Time.deltaTime / Constants.TimeStep, Space.World);
-        }else{
-           GetNextWaypoint();
-           Debug.Log(transform.forward);
+        if(timeController.running && !moving){
+                GetNextWaypoint();
+                StartCoroutine(MoveFromTo(transform.position,targetPosition,Constants.TimeStep));
         }
-        
     }
 
+     IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time){
+        if (!moving && timeController.running){ 
+            moving = true;
+            float t = 0f;
+            while (t < 1f && timeController.running){
+                t += Time.deltaTime / time;
+                transform.position = Vector3.Lerp(pointA, pointB, t); 
+                yield return 0; 
+        }
+        moving = false;
+     }
+ }
 
     void GetNextWaypoint()
 	{

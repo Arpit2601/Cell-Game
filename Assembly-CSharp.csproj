@@ -36,9 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Buttons.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\DirectionCellMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyScript.cs" />
+     <Compile Include="Assets\Scripts\TimeController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/sd/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
