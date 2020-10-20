@@ -6,6 +6,7 @@ public class DirectionCellMovement : MonoBehaviour
     public Vector3 targetPosition ;
     private TimeController timeController;
     private bool moving;
+    private NodeController nodeController;
 
     // For dragging object
     private Vector3 dist;
@@ -13,7 +14,6 @@ public class DirectionCellMovement : MonoBehaviour
     private float posY;
     private float posZ;
     private bool mousePressed;
-    private Vector3 tempPosition;
 
     private Vector3 initialPosition;
 
@@ -21,14 +21,15 @@ public class DirectionCellMovement : MonoBehaviour
         initialPosition = transform.position;  // initial position of our cell
         targetPosition = transform.position;  
         timeController = TimeController.instance;
+        nodeController = NodeController.instance;
         moving  =false;
     }
 
     void Update()
     {
         if(timeController.running && !moving){
-                GetNextWaypoint();
-                StartCoroutine(MoveFromTo(transform.position,targetPosition,Constants.TimeStep));
+            GetNextWaypoint();
+            StartCoroutine(MoveFromTo(transform.position,targetPosition,Constants.TimeStep));
         }
     }
 
@@ -91,7 +92,7 @@ public class DirectionCellMovement : MonoBehaviour
         //     transform.position = worldPos;
         // }
 
-        Vector3? positionHighlightedNode = Node.positionHighlightedNode;
+        Vector3? positionHighlightedNode = nodeController.positionHighlightedNode;
         if(positionHighlightedNode != null){
             transform.position = (Vector3) (initialPosition + positionHighlightedNode);
         }

@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-
-
-    public static Vector3? positionHighlightedNode;
 	public Color hoverColor;
-
+    private NodeController nodeController;
 
 	private Renderer rend;
 	private Color startColor;
@@ -18,20 +15,20 @@ public class Node : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
+        nodeController = NodeController.instance;
     }
 
 	void OnMouseEnter ()
 	{
         rend.material.color = hoverColor;
-        positionHighlightedNode = transform.position;
-        Debug.Log(positionHighlightedNode);
+        nodeController.positionHighlightedNode = transform.position;
 	}
 
 
 	void OnMouseExit ()
 	{
 		rend.material.color = startColor;
-        positionHighlightedNode = null;
+        nodeController.positionHighlightedNode = null;
     }
 
 
