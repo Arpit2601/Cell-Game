@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-	public Color hoverColor;
+    public Color hoverColor;
     private NodeController nodeController;
 
-	private Renderer rend;
-	private Color startColor;
+    private Renderer rend;
+    private Color startColor;
 
     // Start is called before the first frame update
     void Start()
@@ -18,16 +18,16 @@ public class Node : MonoBehaviour
         nodeController = NodeController.instance;
     }
 
-	void OnMouseEnter ()
-	{
+    void OnMouseEnter()
+    {
         rend.material.color = hoverColor;
         nodeController.positionHighlightedNode = transform.position;
-	}
+    }
 
 
-	void OnMouseExit ()
-	{
-		rend.material.color = startColor;
+    void OnMouseExit()
+    {
+        rend.material.color = startColor;
         nodeController.positionHighlightedNode = null;
     }
 

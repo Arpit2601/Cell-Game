@@ -1,62 +1,17 @@
-﻿﻿using UnityEngine;
-using System.Collections; 
-using System;
-public class DirectionCellMovement : MonoBehaviour
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DragDrop : MonoBehaviour
 {
-    public Vector3 targetPosition ;
-    private TimeController timeController;
-    private bool moving;
+
     private NodeController nodeController;
+    public Vector3 offset = new Vector3(0, 2, 0);
 
-    // For dragging object
-    private Vector3 dist;
-    private float posX;
-    private float posY;
-    private float posZ;
-    private bool mousePressed;
-
-    private Vector3 initialPosition;
-
-    void Start() {
-        initialPosition = transform.position;  // initial position of our cell
-        targetPosition = transform.position;  
-        timeController = TimeController.instance;
-        nodeController = NodeController.instance;
-        moving  =false;
-    }
-
-    void Update()
+    private void Start()
     {
-        if(timeController.running && !moving){
-            GetNextWaypoint();
-            StartCoroutine(MoveFromTo(transform.position,targetPosition,Constants.TimeStep));
-        }
+        nodeController = NodeController.instance;
     }
-
-     IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time){
-        if (!moving && timeController.running){ 
-            moving = true;
-            float t = 0f;
-            while (t < 1f && timeController.running){
-                t += Time.deltaTime / time;
-                transform.position = Vector3.Lerp(pointA, pointB, t); 
-                yield return 0; 
-        }
-        moving = false;
-     }
- }
-
-    void GetNextWaypoint()
-	{
-        targetPosition = transform.position;
-        targetPosition.x = (float)Math.Round(targetPosition.x/Constants.nodeSize);
-        targetPosition.z = (float)Math.Round(targetPosition.z/Constants.nodeSize);
-        targetPosition += transform.forward;
-        targetPosition.x *= Constants.nodeSize;
-        targetPosition.z *= Constants.nodeSize;
-	}
-
-
 
     // void OnMouseDown()
     // {
@@ -93,8 +48,9 @@ public class DirectionCellMovement : MonoBehaviour
         // }
 
         Vector3? positionHighlightedNode = nodeController.positionHighlightedNode;
-        if(positionHighlightedNode != null){
-            transform.position = (Vector3) (initialPosition + positionHighlightedNode);
+        if (positionHighlightedNode != null )
+        {
+            transform.position = (Vector3)(positionHighlightedNode + offset);
         }
 
     }
@@ -113,6 +69,5 @@ public class DirectionCellMovement : MonoBehaviour
     //     }
     //     mousePressed = false;
     // }
-
 
 }
