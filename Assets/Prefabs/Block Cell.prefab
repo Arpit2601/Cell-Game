@@ -120,7 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff9f50aa6febe5fa05a677954fa0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDir: {x: 0, y: 0, z: 0}
-  lastPos: {x: 0, y: 0, z: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
   standardDir: {x: 0, y: 0, z: 0}

@@ -13,6 +13,7 @@ public class CellMovement : MonoBehaviour
     private Quaternion targetRotation;
     private Quaternion lastRotation;
 
+
     void Start()
     {
         targetPosition = transform.position;
@@ -47,9 +48,22 @@ public class CellMovement : MonoBehaviour
                 {
                     if (collider.tag == "Player Cell")
                     {
-                        if (collider.GetComponent<CellMovement>().checkCollision(targetPosition))
+                        int col = collider.GetComponent<CellMovement>().checkCollision(targetPosition,targetDir);
+                        if (col==1)
                         {
-                            collider.GetComponent<CellMovement>().ModifyDirection(targetDir);
+                            if(targetDir[0]!=0){
+                                collider.GetComponent<CellMovement>().ModifyDirection(new Vector3(targetDir[0],0,0));
+                            }
+                            else
+                            {
+                                collider.GetComponent<CellMovement>().ModifyDirection(targetDir);
+                            }
+                           
+                        }
+                        if(col == 2)
+                        {
+                            targetPosition = lastPos;
+                            targetDir =  new Vector3 (0,0,0);
                         }
                     }
                 }
@@ -78,10 +92,21 @@ public class CellMovement : MonoBehaviour
         }
     }
 
-    bool checkCollision(Vector3 targetPos)
+    int checkCollision(Vector3 targetPos,Vector3 targetD)
     {
         GetCurrentWaypoint();
-        return targetPos == targetPosition;
+
+        if( targetPos == targetPosition)
+        {
+            // Check if moveable 
+            return 1;
+        }
+        if(targetD == -1*targetDir && targetPos == lastPos)
+        {
+            targetDir = new Vector3 (0,0,0);
+            return 2;
+        }
+        return 0;
     }
 
     public void rotateCell(Vector3 angle)
@@ -106,4 +131,6 @@ public class CellMovement : MonoBehaviour
         rotating = false;
         
     }
+
+
 }

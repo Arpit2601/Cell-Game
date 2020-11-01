@@ -24,7 +24,8 @@ public class DragDrop : MonoBehaviour
 
     void OnMouseDrag()
     {
-
+        if(GameController.gameEnded || GameController.gameStarted)
+        return;
         // if(Camera.main.transform.eulerAngles == new Vector3(90,0,0))
         // {
         //     Debug.Log("camera pointing downwards.");

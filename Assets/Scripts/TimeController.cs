@@ -19,6 +19,7 @@ public class TimeController : MonoBehaviour
 			return;
 		}
 		instance = this;
+    
 	}
     void Start() {
         inPlay=false;
@@ -26,7 +27,16 @@ public class TimeController : MonoBehaviour
         running = false;
     }
 
+    
     public void Step(){
+        if(GameController.gameStarted!=true)
+        {
+            GameController.gameStarted=true;
+        }
+        if(GameController.gameEnded)
+        {
+            return;
+        }
         if(inPlay)
         {
             inPlay=false;
@@ -47,6 +57,14 @@ public class TimeController : MonoBehaviour
 	}
 
     public void Play(){
+        if(GameController.gameStarted!=true)
+        {
+            GameController.gameStarted=true;
+        }
+        if(GameController.gameEnded)
+        {
+            return;
+        }
         inPlay = true;
         StartCoroutine(PlayStep());
     }
@@ -57,7 +75,7 @@ public class TimeController : MonoBehaviour
         {
             yield return 0;
         }
-        while(inPlay && !inStep){
+        while(inPlay && !inStep && !GameController.gameEnded){
             running=true;
             yield return new WaitForSeconds(Constants.TimeStep);
             running = false;

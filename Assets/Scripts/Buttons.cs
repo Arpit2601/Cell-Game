@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class Buttons : MonoBehaviour
     {
         Debug.Log("Play Pressed");
 		timeController.Play();
+    }
+
+    public void ResetPressed()
+    {
+        Debug.Log("Play Pressed");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

@@ -24,6 +24,8 @@ public class CameraCotnroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameController.gameEnded)
+        return;
         if (Input.GetKey("w"))  // move forward 
         {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);

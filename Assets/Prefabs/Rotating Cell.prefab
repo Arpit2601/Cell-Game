@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e4995e52bae484cb2234f4a25ba13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateDir: {x: 0, y: 90, z: 0}
 --- !u!114 &5629825987974306315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ff9f50aa6febe5fa05a677954fa0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDir: {x: 0, y: 0, z: 0}
-  lastPos: {x: 0, y: 0, z: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
   standardDir: {x: 0, y: 0, z: 0}
