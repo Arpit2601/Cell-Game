@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-namespace SpeedTutorMainMenuSystem
-{
     public class MenuController : MonoBehaviour
     {
         #region Default Values
@@ -341,4 +338,3 @@ namespace SpeedTutorMainMenuSystem
         }
         #endregion
     }
-}

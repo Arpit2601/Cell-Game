@@ -7,31 +7,31 @@ namespace SpeedTutorMainMenuSystem
 {
     public class Init_LoadPreferences : MonoBehaviour
     {
-        #region Variables
-        //BRIGHTNESS
-        [Space(20)]
-        [SerializeField] private Brightness brightnessEffect;
-        [SerializeField] private Text brightnessText;
-        [SerializeField] private Slider brightnessSlider;
+        // #region Variables
+        // //BRIGHTNESS
+        // [Space(20)]
+        // [SerializeField] private Brightness brightnessEffect;
+        // [SerializeField] private Text brightnessText;
+        // [SerializeField] private Slider brightnessSlider;
 
-        //VOLUME
-        [Space(20)]
-        [SerializeField] private Text volumeText;
-        [SerializeField] private Slider volumeSlider;
+        // //VOLUME
+        // [Space(20)]
+        // [SerializeField] private Text volumeText;
+        // [SerializeField] private Slider volumeSlider;
 
-        //SENSITIVITY
-        [Space(20)]
-        [SerializeField] private Text controllerText;
-        [SerializeField] private Slider controllerSlider;
+        // //SENSITIVITY
+        // [Space(20)]
+        // [SerializeField] private Text controllerText;
+        // [SerializeField] private Slider controllerSlider;
 
-        //INVERT Y
-        [Space(20)]
-        [SerializeField] private Toggle invertYToggle;
+        // //INVERT Y
+        // [Space(20)]
+        // [SerializeField] private Toggle invertYToggle;
 
-        [Space(20)]
-        [SerializeField] private bool canUse = false;
-        [SerializeField] private MenuController menuController;
-        #endregion
+        // [Space(20)]
+        // [SerializeField] private bool canUse = false;
+        // [SerializeField] private MenuController menuController;
+        // #endregion
 
     //     private void Awake()
     //     {
