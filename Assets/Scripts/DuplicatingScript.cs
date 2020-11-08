@@ -26,6 +26,7 @@ public class DuplicatingScript : MonoBehaviour
     {
         if (timeController.running && !moving)
         {
+            duplicateDir = transform.forward *-1;
             StartCoroutine(DuplicateCells());
         }
     }
@@ -35,7 +36,7 @@ public class DuplicatingScript : MonoBehaviour
         if (!moving && timeController.running)
         {
             moving = true;
-            
+
             yield return new WaitForSeconds(Constants.TimeStep);
             moving = false;
         }
