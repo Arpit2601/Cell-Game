@@ -13,19 +13,19 @@ public class Buttons : MonoBehaviour
 
     public void StepPressed()
     {
-        Debug.Log("Step Pressed");
+        // Debug.Log("Step Pressed");
 		timeController.Step();
     }
 
     public void PlayPressed()
     {
-        Debug.Log("Play Pressed");
+        // Debug.Log("Play Pressed");
 		timeController.Play();
     }
 
     public void ResetPressed()
     {
-        Debug.Log("Play Pressed");
+        // Debug.Log("Reset Pressed");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

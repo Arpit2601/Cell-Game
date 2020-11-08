@@ -14,23 +14,26 @@ public class CellMovement : MonoBehaviour
     private Quaternion lastRotation;
     public Vector3 clampMovement;
     public Vector3 standardClamp = new Vector3(0,0,0);
+    public bool immovable=false;
 
 
     void Start()
     {
+        lastPos = transform.position;
         targetPosition = transform.position;
         timeController = TimeController.instance;
         moving = false;
         rotating = false;
         lastRotation = transform.rotation;
         targetRotation = transform.rotation;
-
+        targetDir = standardDir;
+        clampMovement=standardClamp;
 
     }
 
     void Update()
     {
-        if (timeController.running && !moving)
+        if (timeController.running && !moving && !immovable )
         {
             lastPos = transform.position;
             targetDir = standardDir;
@@ -51,64 +54,58 @@ public class CellMovement : MonoBehaviour
     {
         if (!moving && timeController.running)
         {
-            
             moving = true;
             float t = 0f;
             while (t < 1f && timeController.running)
             {
                 GetCurrentWaypoint();
-                Collider[] colliders = Physics.OverlapSphere(transform.position, Constants.nodeSize-1);
-                if(targetDir != Vector3.zero)
+                if(Vector3.Distance(targetDir, new Vector3(0,0,0)) >=0.1)
                 {
-                    foreach (Collider collider in colliders)
+                    // Collider[] collidersX = Physics.OverlapCapsule(transform.position+new Vector3(Constants.nodeSize,0,0), transform.position+new Vector3(-Constants.nodeSize,0,0) ,2f);
+                    // Collider[] collidersY = Physics.OverlapCapsule(transform.position+new Vector3(0,0,Constants.nodeSize), transform.position+new Vector3(0,0,-Constants.nodeSize), 2f);
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, 3.5f);
+                    foreach(Collider collider in colliders )
                     {
-                        if (collider.tag == "Player Cell" && collider.gameObject != gameObject)
+                        if (collider.tag == "Player Cell" && collider.gameObject.name != gameObject.name)
                         {
                             int col = collider.GetComponent<CellMovement>().checkCollision(targetPosition,targetDir);
                             if (col==1)
                             {
-                                if(targetDir[0]!=0){
+                                if(targetDir[0]!=0 && collider.GetComponent<CellMovement>().canModifyDir(new Vector3(targetDir[0],0,0)))
+                                {
                                     collider.GetComponent<CellMovement>().ModifyDirection(new Vector3(targetDir[0],0,0));
                                 }
                                 else
                                 {
                                     collider.GetComponent<CellMovement>().ModifyDirection(targetDir);
                                 }
+                
                                 
                             }
                             else if(col == 2)
                             {
-                               
-
                                 for (int i = 0; i < 3; i++)
                                 {
-                                    clampMovement[i] = Math.Abs(targetDir[i]);
+                                    clampMovement[i] = Math.Max(clampMovement[i],Math.Abs(targetDir[i]));
                                 }
-                                Debug.Log(clampMovement);
+                                // Debug.Log(gameObject.name + clampMovement+collider.gameObject.name);
                                 targetPosition = lastPos;
                                 targetDir =  new Vector3 (0,0,0);
+                            
                             }
+                            
                         }
                     }
+
                 }
-                t += Time.deltaTime / Constants.TimeStep;
+                t += Time.deltaTime / (Constants.TimeStep*(float)1.0);
                 transform.position = Vector3.Lerp(lastPos, targetPosition, t);
                 yield return 0;
-            }
-            lastPos = transform.position;
-            targetDir = standardDir;
-            clampMovement=standardClamp;
-            if(clampMovement[0]==1)
-            {
-                targetDir[0]=0;
-            }
-            if(clampMovement[2]==1)
-            {
-                targetDir[2]=0;
             }
             moving = false;
         }
     }
+
     void GetCurrentWaypoint()
     {
         targetPosition = lastPos;
@@ -156,7 +153,8 @@ public class CellMovement : MonoBehaviour
     {
         GetCurrentWaypoint();
 
-        if(targetD ==  -1*targetDir && ( Vector3.Distance(targetPos, lastPos)<Constants.distanceDelta||Vector3.Distance(targetPos ,targetPosition)<Constants.distanceDelta))
+        Debug.Log(gameObject.name);
+        if(targetD ==  -1*targetDir && Vector3.Distance(targetPos, lastPos)<Constants.distanceDelta)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -164,6 +162,16 @@ public class CellMovement : MonoBehaviour
             }
             targetDir = new Vector3 (0,0,0);
             return 2;
+            
+        }
+        if(targetD ==  -1*targetDir && Vector3.Distance(targetPos, targetPosition)<Constants.distanceDelta)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                clampMovement[i] = Math.Max(clampMovement[i],Math.Abs(targetD[i]));
+            }
+            targetDir = new Vector3 (0,0,0);
+            return 0;
         }
         if( Vector3.Distance(targetPos ,targetPosition)<Constants.distanceDelta)
         {
@@ -178,7 +186,7 @@ public class CellMovement : MonoBehaviour
     public void rotateCell(Vector3 angle)
     {
         targetRotation = Quaternion.Euler(targetRotation.eulerAngles + angle);
-        if(!rotating){
+        if(!rotating && !immovable){
             StartCoroutine(RotateMe());
         }
     }
