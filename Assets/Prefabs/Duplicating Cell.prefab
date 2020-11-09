@@ -125,6 +125,7 @@ MonoBehaviour:
   standardDir: {x: 0, y: 0, z: 0}
   clampMovement: {x: 0, y: 0, z: 0}
   standardClamp: {x: 0, y: 0, z: 0}
+  immovable: 0
 --- !u!114 &9002430228328160458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +138,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a6b7d8ce0be1c092aa96e78d58874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionCellPrefab: {fileID: 0}
-  RotatingCellPrefab: {fileID: 0}
-  blockCellPrefab: {fileID: 0}
-  generatingCellPrefab: {fileID: 0}
+  directionCellPrefab: {fileID: 6788405109580593371, guid: 160e8f8fe41a6d5a1a42ef8eedd935f4,
+    type: 3}
+  RotatingCellPrefab: {fileID: 6683559407493083852, guid: f51b7352ea1116c8bb536b191bbab8cf,
+    type: 3}
+  blockCellPrefab: {fileID: 2930305689953848727, guid: 0050e45bfcb83c6dfa324f6e2ce9139a,
+    type: 3}
+  generatingCellPrefab: {fileID: 5129963114219971951}
+  OneDirCellPrefab: {fileID: 1857024836820623726, guid: 54484044561835fcca6132ba7020561b,
+    type: 3}
+  BoundryPrefab: {fileID: 7074119039549180115, guid: 6cb8870a940f9c22b901fbfe64630228,
+    type: 3}
   duplicateDir: {x: 0, y: 0, z: 0}
+  targetRot: {x: 0, y: 0, z: 0, w: 0}

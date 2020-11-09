@@ -123,4 +123,5 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   standardDir: {x: 0, y: 0, z: 0}
   clampMovement: {x: 0, y: 0, z: 0}
-  standardClamp: {x: 0, y: 0, z: 0}
+  standardClamp: {x: 1, y: 0, z: 1}
+  immovable: 0

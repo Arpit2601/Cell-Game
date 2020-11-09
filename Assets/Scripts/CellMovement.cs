@@ -153,7 +153,7 @@ public class CellMovement : MonoBehaviour
     {
         GetCurrentWaypoint();
 
-        Debug.Log(gameObject.name);
+        // Debug.Log(gameObject.name);
         if(targetD ==  -1*targetDir && Vector3.Distance(targetPos, lastPos)<Constants.distanceDelta)
         {
             for (int i = 0; i < 3; i++)
