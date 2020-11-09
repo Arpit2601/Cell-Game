@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5185532553841167101}
   - component: {fileID: 3354429402554468394}
   m_Layer: 0
-  m_Name: Duplicating Cell 1
+  m_Name: Duplicating Cell
   m_TagString: Player Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDir: {x: 0, y: 0, z: 0}
+  lastPos: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   standardDir: {x: 0, y: 0, z: 0}
+  moving: 0
+  rotating: 0
   clampMovement: {x: 0, y: 0, z: 0}
   standardClamp: {x: 0, y: 0, z: 0}
   immovable: 0
@@ -139,14 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a6b7d8ce0be1c092aa96e78d58874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionCellPrefab: {fileID: 920317292519511956, guid: 9bbe11d6c531169f981c03ce7e1658ab,
+  directionCellPrefab: {fileID: 7194791282984088083, guid: d7d7a3b0770b5a3d5a48778412042ecc,
     type: 3}
-  RotatingCellPrefab: {fileID: 6153747494476985151, guid: adade67b89b0ede0fa25b51bd1f48bd5,
+  RotatingCellPrefab: {fileID: 6067820821023624993, guid: d5b41a6d6631ed290992933571a9c2df,
     type: 3}
-  blockCellPrefab: {fileID: 1869751801356895148, guid: 6646f2daa828ad0418524487b0f90627,
+  blockCellPrefab: {fileID: 7718671294659587146, guid: ca064b1a9339c77fbacd7f1a55756b3e,
     type: 3}
-  generatingCellPrefab: {fileID: 2772564396251012228}
-  OneDirCellPrefab: {fileID: 1857024836820623726, guid: 54484044561835fcca6132ba7020561b,
+  duplicatingCellPrefab: {fileID: 2772564396251012228}
+  OneDirCellPrefab: {fileID: 4964236453208781794, guid: 35774d2ee02f993d9982ad8c88d52249,
     type: 3}
   BoundryPrefab: {fileID: 7074119039549180115, guid: 6cb8870a940f9c22b901fbfe64630228,
     type: 3}

@@ -107,7 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDir: {x: 0, y: 0, z: 0}
+  lastPos: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   standardDir: {x: 0, y: 0, z: 0}
+  moving: 0
+  rotating: 0
   clampMovement: {x: 0, y: 0, z: 0}
   standardClamp: {x: 1, y: 1, z: 1}
   immovable: 1

@@ -4,12 +4,12 @@ using System;
 public class CellMovement : MonoBehaviour
 {
     public Vector3 targetDir;
-    private Vector3 lastPos;
-    private Vector3 targetPosition;
+    public Vector3 lastPos;
+    public Vector3 targetPosition;
     public Vector3 standardDir;
     private TimeController timeController;
-    private bool moving;
-    private bool rotating;
+    public bool moving;
+    public bool rotating;
     private Quaternion targetRotation;
     private Quaternion lastRotation;
     public Vector3 clampMovement;
@@ -37,6 +37,7 @@ public class CellMovement : MonoBehaviour
         {
             lastPos = transform.position;
             targetDir = standardDir;
+            GetCurrentWaypoint();
             clampMovement=standardClamp;
             if(clampMovement[0]==1)
             {

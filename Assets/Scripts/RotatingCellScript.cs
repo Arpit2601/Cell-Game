@@ -34,7 +34,11 @@ public class RotatingCellScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, directions[i], out hit, Constants.nodeSize))
                 {
-                    hit.collider.GetComponent<CellMovement>().rotateCell(rotateDir);
+                    if(hit.collider.tag == "Player Cell")
+                    {
+                        // Debug.Log(hit.collider.gameObject.name);
+                        hit.collider.GetComponent<CellMovement>().rotateCell(rotateDir);
+                    }   
                 }
             }
             yield return new WaitForSeconds(Constants.TimeStep);

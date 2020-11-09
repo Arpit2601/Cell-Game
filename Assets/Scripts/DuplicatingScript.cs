@@ -11,7 +11,6 @@ public class DuplicatingScript : MonoBehaviour
     public GameObject directionCellPrefab;
     public GameObject RotatingCellPrefab;
     public GameObject blockCellPrefab;
-    public GameObject generatingCellPrefab;
     public GameObject OneDirCellPrefab;
     public GameObject BoundryPrefab;
 
@@ -28,7 +27,6 @@ public class DuplicatingScript : MonoBehaviour
         prefabs.Add(directionCellPrefab);
         prefabs.Add(RotatingCellPrefab);
         prefabs.Add(blockCellPrefab);
-        prefabs.Add(generatingCellPrefab);
         prefabs.Add(OneDirCellPrefab);
         prefabs.Add(BoundryPrefab);
         timeController = TimeController.instance;
@@ -39,11 +37,6 @@ public class DuplicatingScript : MonoBehaviour
     {
         if (timeController.running && !moving)
         {
-            for(int i=0;i<3;i++)
-            {
-                duplicateDir[i] = (int)Math.Round(-1*transform.forward[i]);
-            }
-            GetCurrentTarget();
             StartCoroutine(DuplicateCells());
         }
     }
@@ -53,21 +46,42 @@ public class DuplicatingScript : MonoBehaviour
         if (!moving && timeController.running)
         {
             moving = true;
+            yield return new WaitForSeconds(Constants.TimeStep);
+            for(int i=0;i<3;i++)
+            {
+                duplicateDir[i] = (int)Math.Round(-1*transform.forward[i]);
+            }
+            GetCurrentTarget();
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, duplicateDir, out hit, Constants.nodeSize))
+            bool canDuplicate =true;
+            if (Physics.Raycast(transform.position, -1*duplicateDir, out hit, Constants.nodeSize))
             {
                 if(hit.collider.tag == "Player Cell"){
-                    String prefabName = hit.collider.gameObject.name;
-                    foreach (GameObject prefab in prefabs)
-                    {
-                        if(prefabName.Contains(prefab.name))
+                    canDuplicate =false;
+                }
+            }
+            if(canDuplicate)
+            {
+                if (Physics.Raycast(transform.position, duplicateDir, out hit, Constants.nodeSize))
+                {
+                    if(hit.collider.tag == "Player Cell"){
+                        String prefabName = hit.collider.gameObject.name;
+                        foreach (GameObject prefab in prefabs)
                         {
-                           Instantiate(prefab, targetPosition , hit.collider.transform.rotation); 
+                            if(prefabName.Contains(prefab.name))
+                            {
+                                Instantiate(prefab, targetPosition , hit.collider.transform.rotation); 
+                            }
+                        }
+                        if(prefabName.Contains("Duplicating Cell"))
+                        {
+                            var obj = (GameObject)Instantiate(gameObject, targetPosition , hit.collider.transform.rotation);
+                            // obj.GetComponent<DuplicatingScript>().rotateCell(rotateDir);
                         }
                     }
                 }
             }
-            yield return new WaitForSeconds(Constants.TimeStep);
+           
             moving = false;
         }
     }
@@ -81,4 +95,15 @@ public class DuplicatingScript : MonoBehaviour
         targetPosition.x *= Constants.nodeSize;
         targetPosition.z *= Constants.nodeSize;
     }
+
+    // public void waitOneStep() {
+    //     StartCoroutine(waiting());
+    // }
+
+    // IEnumerator waiting()
+    // {
+    //     moving=true;
+    //     yield 
+        
+    // }
 }
