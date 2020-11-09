@@ -29,4 +29,16 @@ public class Buttons : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void MainMenu()
+    {
+        // Debug.Log("Reset Pressed");
+		SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel()
+    {
+        // Debug.Log("Reset Pressed");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
 }

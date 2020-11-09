@@ -107,5 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.3773585, g: 0.70661104, b: 1, a: 1}
-  unSelectableColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+  unSelectableColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   selectable: 1
