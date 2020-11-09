@@ -67,21 +67,14 @@ public class CellMovement : MonoBehaviour
                     Collider[] colliders = Physics.OverlapSphere(transform.position, 3.5f);
                     foreach(Collider collider in colliders )
                     {
-                        if (collider.tag == "Player Cell" && collider.gameObject.name != gameObject.name)
+                        if (collider.tag == "Player Cell" && collider.gameObject != gameObject)
                         {
                             int col = collider.GetComponent<CellMovement>().checkCollision(targetPosition,targetDir);
                             if (col==1)
                             {
-                                if(targetDir[0]!=0 && collider.GetComponent<CellMovement>().canModifyDir(new Vector3(targetDir[0],0,0)))
-                                {
-                                    collider.GetComponent<CellMovement>().ModifyDirection(new Vector3(targetDir[0],0,0));
-                                }
-                                else
-                                {
-                                    collider.GetComponent<CellMovement>().ModifyDirection(targetDir);
-                                }
+                                 collider.GetComponent<CellMovement>().ModifyDirection(targetDir);
                 
-                                
+                                // Debug.Log(gameObject.name + collider.gameObject.name);
                             }
                             else if(col == 2)
                             {
@@ -103,6 +96,18 @@ public class CellMovement : MonoBehaviour
                 transform.position = Vector3.Lerp(lastPos, targetPosition, t);
                 yield return 0;
             }
+            // lastPos = transform.position;
+            // targetDir = standardDir;
+            // GetCurrentWaypoint();
+            // clampMovement=standardClamp;
+            // if(clampMovement[0]==1)
+            // {
+            //     targetDir[0]=0;
+            // }
+            // if(clampMovement[2]==1)
+            // {
+            //     targetDir[2]=0;
+            // }
             moving = false;
         }
     }
@@ -121,7 +126,12 @@ public class CellMovement : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            targetDir[i] = Math.Max(-1, Math.Min(targetDir[i] + dir[i], 1));
+            if(targetDir[i] !=dir[i]  && dir[i]!=0)
+            {
+                targetDir[i] = Math.Max(-1, Math.Min(targetDir[i] + dir[i], 1));
+                break;
+            }
+            
         }
         if(clampMovement[0]==1)
         {
