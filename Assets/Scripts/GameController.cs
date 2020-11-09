@@ -23,14 +23,15 @@ public class GameController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy Cell");
         if(enemies.Length == 0)
         {
-            EndLevel();
+            StartCoroutine(EndLevel());
         }
 
     }
 
-    private void EndLevel()
+    IEnumerator EndLevel()
     {
         gameEnded=true;
+        yield return new WaitForSeconds(1.0f);
         gameOverScreen.SetActive(true);
     }
 
