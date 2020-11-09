@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211029228423459763}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 455458712849253678}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!33 &7072528025336767217
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 6013953375045127238}
   - component: {fileID: 7420121059871989923}
   - component: {fileID: 1555126424266006045}
-  - component: {fileID: 8365574831586953319}
+  - component: {fileID: 9002430228328160458}
   m_Layer: 0
-  m_Name: Duplicating Cell 1
+  m_Name: Duplicating Cell
   m_TagString: Player Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,13 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a6b7d8ce0be1c092aa96e78d58874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionCellPrefab: {fileID: 6788405109580593371, guid: 160e8f8fe41a6d5a1a42ef8eedd935f4,
+  directionCellPrefab: {fileID: 920317292519511956, guid: 9bbe11d6c531169f981c03ce7e1658ab,
     type: 3}
-  RotatingCellPrefab: {fileID: 6683559407493083852, guid: f51b7352ea1116c8bb536b191bbab8cf,
+  RotatingCellPrefab: {fileID: 6153747494476985151, guid: adade67b89b0ede0fa25b51bd1f48bd5,
     type: 3}
-  blockCellPrefab: {fileID: 2930305689953848727, guid: 0050e45bfcb83c6dfa324f6e2ce9139a,
+  blockCellPrefab: {fileID: 1869751801356895148, guid: 6646f2daa828ad0418524487b0f90627,
     type: 3}
-  generatingCellPrefab: {fileID: 5129963114219971951}
+  generatingCellPrefab: {fileID: 8365574831586953316}
   OneDirCellPrefab: {fileID: 1857024836820623726, guid: 54484044561835fcca6132ba7020561b,
     type: 3}
   BoundryPrefab: {fileID: 7074119039549180115, guid: 6cb8870a940f9c22b901fbfe64630228,
