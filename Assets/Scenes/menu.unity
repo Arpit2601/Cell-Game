@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MouseClick
       objectReference: {fileID: 0}
+    - target: {fileID: 1640981557906411197, guid: 897fba6cf456b40c2bccee882a7217e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1838141210290208119, guid: 897fba6cf456b40c2bccee882a7217e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,6 +223,16 @@ PrefabInstance:
       propertyPath: defaultInvertY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5772368350255330499, guid: 897fba6cf456b40c2bccee882a7217e1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772368350255330499, guid: 897fba6cf456b40c2bccee882a7217e1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5899066143743078599, guid: 897fba6cf456b40c2bccee882a7217e1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -238,6 +253,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MouseClick
       objectReference: {fileID: 0}
+    - target: {fileID: 6761978065310479212, guid: 897fba6cf456b40c2bccee882a7217e1,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761978065310479212, guid: 897fba6cf456b40c2bccee882a7217e1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88b3dafbcedd85dd28f98d284ab2eae3,
+        type: 3}
     - target: {fileID: 8811551612437657795, guid: 897fba6cf456b40c2bccee882a7217e1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
