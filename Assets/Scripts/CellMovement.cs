@@ -96,18 +96,18 @@ public class CellMovement : MonoBehaviour
                 transform.position = Vector3.Lerp(lastPos, targetPosition, t);
                 yield return 0;
             }
-            // lastPos = transform.position;
-            // targetDir = standardDir;
-            // GetCurrentWaypoint();
-            // clampMovement=standardClamp;
-            // if(clampMovement[0]==1)
-            // {
-            //     targetDir[0]=0;
-            // }
-            // if(clampMovement[2]==1)
-            // {
-            //     targetDir[2]=0;
-            // }
+            lastPos = transform.position;
+            targetDir = standardDir;
+            GetCurrentWaypoint();
+            clampMovement=standardClamp;
+            if(clampMovement[0]==1)
+            {
+                targetDir[0]=0;
+            }
+            if(clampMovement[2]==1)
+            {
+                targetDir[2]=0;
+            }
             moving = false;
         }
     }
@@ -124,6 +124,14 @@ public class CellMovement : MonoBehaviour
 
     void ModifyDirection(Vector3 dir)
     {
+        if(clampMovement[0]==1)
+        {
+            dir[0]=0;
+        }
+        if(clampMovement[2]==1)
+        {
+            dir[2]=0;
+        }
         for (int i = 0; i < 3; i++)
         {
             if(targetDir[i] !=dir[i]  && dir[i]!=0)
@@ -133,14 +141,7 @@ public class CellMovement : MonoBehaviour
             }
             
         }
-        if(clampMovement[0]==1)
-        {
-            targetDir[0]=0;
-        }
-        if(clampMovement[2]==1)
-        {
-            targetDir[2]=0;
-        }
+
     }
 
     bool canModifyDir(Vector3 dir)

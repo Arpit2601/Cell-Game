@@ -7939,8 +7939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: 282.99994}
-  m_SizeDelta: {x: 355.90015, y: 200}
+  m_AnchoredPosition: {x: 109, y: 332}
+  m_SizeDelta: {x: 395.90015, y: 334.7202}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3455830221066846199
 CanvasRenderer:
@@ -7982,7 +7982,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cell Automata
+  m_Text: 'Sleeper
+
+    Cell
+
+    Destruction'
 --- !u!114 &5915368589238522326
 MonoBehaviour:
   m_ObjectHideFlags: 0
